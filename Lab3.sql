@@ -72,7 +72,7 @@ insert into Loan values
 (4, "SBI_ParliamentRoad", 4000),
 (5, "SBI_Jantarmantar", 5000);
 
-select BranchName, Assets as "Assets in Lakhs" from Branch;
+select BranchName, Assets / 100000 as "Assets in Lakhs" from Branch;
 
 select CustomerName from Depositer where AccNo in 
 (select AccNo from BankAccount where BranchName = "SBI_ResidencyRoad")
@@ -80,4 +80,4 @@ group by CustomerName having count(AccNo) > 1;
 
 create view NetLoan as 
 select BranchName, sum(Amount) as "Net Loan Amount" from Loan group by BranchName;
-
+select * from NetLoan;
