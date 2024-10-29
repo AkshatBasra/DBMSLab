@@ -47,11 +47,11 @@ on update cascade on delete cascade
 );
 
 insert into Dept values
-(10, "CSE", "4th Floor PJ"),
-(11, "ISE", "5th Floor PJ"),
-(12, "ECE", "3rd Floor PJ"),
-(13, "ME", "Mech Block"),
-(14, "EEE", "6th floor PG");
+(10, "CSE", "Bengaluru"),
+(11, "ISE", "Bengaluru"),
+(12, "ECE", "Bengaluru"),
+(13, "ME", "Hyderabad"),
+(14, "EEE", "Hyderabad");
 
 insert into Employee values
 (1, "A", NULL, "2000-05-16", 10000, 10),
@@ -93,5 +93,9 @@ select EmpNo from Employee e where not exists(
 select * from Incentives i where e.EmpNo = i.EmpNo
 );
 
-select e.EmpNo, EName, DName, JobRole, DLoc, PLoc from Employee e, Dept d, AssignedTo a, Project p
-where e.DeptNo = d.Deptno and e.EmpNo = a.EmpNo and a.PNo = p.PNo;
+select e.EmpNo, EName, DName, JobRole, DLoc, PLoc 
+from Employee e, Dept d, AssignedTo a, Project p
+where e.DeptNo = d.Deptno 
+and e.EmpNo = a.EmpNo 
+and a.PNo = p.PNo
+and DLoc = PLoc;
