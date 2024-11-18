@@ -51,14 +51,14 @@ select distinct PName from Parts p, Catalog c where p.PID = c.PID and exists (
 select * from Parts p1 where p1.PID = c.PID
 );
 
-select Sname from Supplier s where not exists (
+select SName from Supplier s where not exists (
 select * from Parts p where not exists(
 select * from Catalog c1 where c1.SID = s.SID and c1.PID = p.PID
 ));
 
-select SID from Catalog c1 group by SID having count(PID) = (
+/*select SID from Catalog c1 group by SID having count(PID) = (
 select count(distinct c2.PID) from Catalog c2
-);
+);*/
 
 /*select SID from Catalog c1 where PID in (
 select PID from Parts where Color = "Red")
@@ -67,7 +67,7 @@ select count(distinct c2.PID) from Catalog c2 where PID in (
 select PID from Parts where Color = "Red")
 );*/
 
-select Sname from Supplier s where not exists (
+select SName from Supplier s where not exists (
 select * from Parts p where Color = "Red" and not exists(
 select * from Catalog c1 where c1.SID = s.SID and c1.PID = p.PID
 ));
@@ -81,18 +81,9 @@ select SID from Catalog c1 where Cost > (
 select avg(Cost) from Catalog c2 where c1.SID = c2.SID group by SID
 ));
 
-select SName, PName from Supplier s, Parts p, Catalog c
-where s.SID = c.SID and p.PID = c.PID
-and c.SID in (
-select SID from Catalog c1
-where Cost = (
+select SName, PName from Supplier s, Parts p, Catalog c1
+where s.SID = c1.SID and p.PID = c1.PID
+and Cost in (
 select max(Cost) from Catalog c2
-where c1.SID = c2.SID group by SID
-))
-and c.PID in(
-select PID from Catalog c1
-where Cost = (
-select max(Cost) from Catalog c2
-where c1.SID = c2.SID group by SID
-));
-
+where c2.PID = c1.PID
+);
