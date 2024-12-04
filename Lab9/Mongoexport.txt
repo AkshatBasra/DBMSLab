@@ -1,0 +1,8 @@
+C:\Users\STUDENT\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoexport mongodb+srv://Akshat:1BM23CS020@cluster0.bmfpm.mongodb.net/test --collection=Customer --out D:\1BM23CS020\MongoDB\Customer.csv
+2024-12-04T11:52:36.396+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.bmfpm.mongodb.net/test
+2024-12-04T11:52:36.602+0530    exported 5 records
+
+
+C:\Users\STUDENT\Downloads\mongodb-database-tools-windows-x86_64-100.10.0\mongodb-database-tools-windows-x86_64-100.10.0\bin>mongoimport mongodb+srv://Akshat:1BM23CS020@cluster0.bmfpm.mongodb.net/test --collection=New_Student --file D:\1BM23CS020\MongoDB\New_Student.json
+2024-12-04T11:59:22.405+0530    connected to: mongodb+srv://[**REDACTED**]@cluster0.bmfpm.mongodb.net/test
+2024-12-04T11:59:22.515+0530    5 document(s) imported successfully. 0 document(s) failed to import.
